@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Bài 4</title>
+</head>
+<body>
+    <div class="container">
+        <h3>Trò chơi giữa người chơi và máy tính</h3>
+        <button onclick="chuongTrinh('✌️',0)">✌️</button>
+        <button onclick="chuongTrinh('👊',1)">👊</button>
+        <button onclick="chuongTrinh('🖐️',2)">🖐️</button>
+        <div class="box1">
+            <h5 class="text">Người chơi chọn: </h5>
+            <h2 id="nguoiChoiChon"></h2>
+        </div>
+        <div class="box1">
+            <h5 class="text">Máy:</h5>
+            <h2 id="mayLuaChon"></h2>
+        </div>
+        <h3 id="ketQuaCuoiCung">|Kết quả|</h3>
+    </div>
+    <script>
+        var ketQuaNguoiChoi = document.querySelector("#nguoiChoiChon");
+        var ketQuaMayLuaChon = document.querySelector("#mayLuaChon");
+        var ketQuaCuoiCung = document.querySelector("#ketQuaCuoiCung");
+
+        var nguoiChoi;
+        var may;
+        var mangKeoBuaBao = ["✌️","👊","🖐️"];
+        var nguoiChoiNumber;
+        var mayNumber;
+        
+
+        function chuongTrinh(value,number){
+            nguoiChoi = value;
+            nguoiChoiNumber = number;
+            // console.log(nguoiChoi)
+            console.log(nguoiChoiNumber);
+            ketQuaNguoiChoi.innerText = nguoiChoi;
+
+            mayLuaChon();
+
+            soSanhKetQua();
+        }
+        function mayLuaChon(){
+            mayNumber = Math.floor(Math.random() * 3);
+            may = mangKeoBuaBao[mayNumber];
+            ketQuaMayLuaChon.innerText = may;
+            console.log(mayNumber);
+        }
+        function soSanhKetQua(){
+            var ketQua;
+            if(nguoiChoiNumber==0 && mayNumber==2){
+                ketQua = "Thắng";
+            } else if(nguoiChoiNumber==2 && mayNumber==0){
+                ketQua = "Thua";
+            } else if(nguoiChoiNumber == mayNumber){
+                ketQua = "Hòa";
+            } else if(nguoiChoiNumber > mayNumber){
+                ketQua = "Thắng";
+            } else{
+                ketQua = "Thua";
+            }
+            ketQuaCuoiCung.innerText = ketQua;
+        }
+    </script>
+</body>
+</html>
